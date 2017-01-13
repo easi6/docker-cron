@@ -5,6 +5,6 @@ FROM alpine:3.3
 
 RUN apk add --no-cache bash tzdata
 
-COPY entrypoint /usr/local/bin/
+COPY cron-entrypoint /usr/local/bin/
 
-CMD ["entrypoint"]
+CMD ["cron-entrypoint"]
