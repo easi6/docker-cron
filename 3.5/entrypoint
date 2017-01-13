@@ -1,0 +1,24 @@
+#!/bin/bash
+# Simple entrypoint for the bigtruedata/cron Docker image.
+# Copyright (C) 2017 BigTrueData
+
+set -e
+
+trap exit SIGINT
+trap exit SIGTERM
+
+# configure timezone if provided
+if [ -n "$TIMEZONE" ]; then
+  cp /usr/share/zoneinfo/"$TIMEZONE" /etc/localtime
+  echo "$TIMEZONE" > /etc/timezone
+fi
+
+# configure timeserver if not provided
+if [ ! -n "$TIMESERVER" ]; then
+  TIMESERVER=pool.ntp.org
+fi
+
+# configure cron (no action if not provided)
+echo "$CRON_ENTRY" | crontab -
+
+ntpd -p "$TIMESERVER" && crond -f
