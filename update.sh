@@ -21,9 +21,9 @@ FROM alpine:$version
 
 RUN apk add --no-cache bash tzdata
 
-COPY entrypoint /usr/local/bin/
+COPY cron-entrypoint /usr/local/bin/
 
-CMD ["entrypoint"]
+CMD ["cron-entrypoint"]
 END
 
 done
