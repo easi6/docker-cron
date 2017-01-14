@@ -14,7 +14,7 @@ if [ -n "$TIMEZONE" ]; then
 fi
 
 # configure timeserver if not provided
-if [ ! -n "$TIMESERVER" ]; then
+if [ -z "$TIMESERVER" ]; then
   TIMESERVER=pool.ntp.org
 fi
 
