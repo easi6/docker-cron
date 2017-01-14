@@ -25,7 +25,7 @@ This image is based in the [Alpine Linux Docker image](https://hub.docker.com/r/
 ## Quick Start
 
 This image is provided to be executed with a little configuration using environment variables. These variables can be divided into two groups:
-- `TIMEZONE` and `TIMESERVER` to configure and adjust the local time of the container, and
+- `TIME_ZONE` and `TIME_SERVER` to configure and adjust the local time of the container, and
 - `CRON_ENTRY` to scheduling the task the container is ought to execute.
 
 ### Executing a cron task
@@ -39,18 +39,18 @@ $ docker run --rm --tty --interactive --env "CRON_ENTRY=* * * * * date" bigtrued
 
 ### Configuring the local time of the running container
 
-The local time of the container can be localized using the `TIMEZONE` environment variable. If not provided, the configured timezone of the container defaults to Alpine's image configuration (Currently UTC).
+The local time of the container can be localized using the `TIME_ZONE` environment variable. If not provided, the configured timezone of the container defaults to Alpine's image configuration (Currently UTC).
 
 The following command uses Iran's time zone to configure the container's location:
 ```sh
-$ docker run --rm --tty --interactive --env "TIMEZONE=Iran" bigtruedata/cron
+$ docker run --rm --tty --interactive --env "TIME_ZONE=Iran" bigtruedata/cron
 ```
 
 ### Adjusting the container's internal clock
 
-When the image is run the `entrypoint` script synchronizes the local time using a time server. By default, the time server used is `pool.ntp.org` but it can be overriden using the `TIMESERVER` environment variable.
+When the image is run the `entrypoint` script synchronizes the local time using a time server. By default, the time server used is `pool.ntp.org` but it can be overriden using the `TIME_SERVER` environment variable.
 
 The following command uses the `hora.rediris.es` time server for time synchornization:
 ```sh
-$ docker run --rm --tty --interactive --env "TIMESERVER=hora.rediris.es" bigtruedata/cron
+$ docker run --rm --tty --interactive --env "TIME_SERVER=hora.rediris.es" bigtruedata/cron
 ```
