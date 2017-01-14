@@ -8,17 +8,17 @@ trap exit SIGINT
 trap exit SIGTERM
 
 # configure timezone if provided
-if [ -n "$TIMEZONE" ]; then
-  cp /usr/share/zoneinfo/"$TIMEZONE" /etc/localtime
-  echo "$TIMEZONE" > /etc/timezone
+if [ -n "$TIME_ZONE" ]; then
+  cp /usr/share/zoneinfo/"$TIME_ZONE" /etc/localtime
+  echo "$TIME_ZONE" > /etc/timezone
 fi
 
 # configure timeserver if not provided
-if [ ! -n "$TIMESERVER" ]; then
-  TIMESERVER=pool.ntp.org
+if [ -z "$TIME_SERVER" ]; then
+  TIME_SERVER=pool.ntp.org
 fi
 
 # configure cron (no action if not provided)
 echo "$CRON_ENTRY" | crontab -
 
-ntpd -p "$TIMESERVER" && crond -f
+ntpd -p "$TIME_SERVER" && crond -f
