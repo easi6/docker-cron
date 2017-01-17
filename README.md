@@ -34,7 +34,7 @@ The image is currently designed to support the execution of a sigle cron task. T
 
 The following command executes the image and schedules every minute a tasks that prints the current date and time of the running container:
 ```sh
-$ docker run --rm --tty --interactive --env "CRON_ENTRY=* * * * * date" bigtruedata/cron
+docker run --rm --tty --interactive --env "CRON_ENTRY=* * * * * date" bigtruedata/cron
 ```
 
 ### Configuring the local time of the running container
@@ -43,7 +43,7 @@ The local time of the container can be localized using the `TIME_ZONE` environme
 
 The following command uses Iran's time zone to configure the container's location:
 ```sh
-$ docker run --rm --tty --interactive --env "TIME_ZONE=Iran" bigtruedata/cron
+docker run --rm --tty --interactive --env "TIME_ZONE=Iran" bigtruedata/cron
 ```
 
 ### Adjusting the container's internal clock
@@ -52,5 +52,5 @@ When the image is run the `entrypoint` script synchronizes the local time using 
 
 The following command uses the `hora.rediris.es` time server for time synchornization:
 ```sh
-$ docker run --rm --tty --interactive --env "TIME_SERVER=hora.rediris.es" bigtruedata/cron
+docker run --rm --tty --interactive --env "TIME_SERVER=hora.rediris.es" bigtruedata/cron
 ```
