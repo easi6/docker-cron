@@ -1,0 +1,10 @@
+# Generated automatically by update.sh
+# Do no edit this file
+
+FROM alpine:edge
+
+RUN apk add --no-cache bash tzdata
+
+COPY cron-entrypoint /usr/local/bin/
+
+CMD ["cron-entrypoint"]
