@@ -28,7 +28,7 @@ do
 FROM alpine:$version
 
 RUN echo $'http://mirrors.ustc.edu.cn/alpine/$tag/main/\n\\
-  http://mirrors.ustc.edu.cn/alpine/$tag/community\n'\\
+http://mirrors.ustc.edu.cn/alpine/$tag/community\n'\\
   > /etc/apk/repositories
 
 RUN apk add --no-cache bash tzdata
