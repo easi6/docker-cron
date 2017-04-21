@@ -3,8 +3,8 @@
 
 FROM alpine:3.3
 
-RUN echo $"http://mirrors.ustc.edu.cn/alpine/v3.3/main/\n\
-  http://mirrors.ustc.edu.cn/alpine/v3.3/community\n"\
+RUN echo $'http://mirrors.ustc.edu.cn/alpine/v3.3/main/\n\
+  http://mirrors.ustc.edu.cn/alpine/v3.3/community\n'\
   > /etc/apk/repositories
 
 RUN apk add --no-cache bash tzdata
